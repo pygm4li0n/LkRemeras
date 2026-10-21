@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>LK Remeras — Personalizadas · Rosario</title>
+  <meta name="description" content="Remeras personalizadas directas de fábrica. Venta por mayor y menor. Algodón premium. Envíos sin cargo a todo Rosario.">
+  <meta name="theme-color" content="#0A0A0A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://i.postimg.cc">
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0A0A0A;
+      --bg-2: #0E0E0E;
+      --card: #131313;
+      --ink: #F5F5F5;
+      --ink-2: #B5B5B5;
+      --muted: #6E6E6E;
+      --line: rgba(255,255,255,0.08);
+      --line-strong: rgba(255,255,255,0.18);
+      --accent: #39FF14;
+      --accent-soft: rgba(57,255,20,0.12);
+      --accent-glow: rgba(57,255,20,0.4);
+      --danger: #FF5A3C;
+      --danger-soft: rgba(255,90,60,0.1);
+      --danger-border: rgba(255,90,60,0.3);
+      --wa: #25D366;
+      --wa-glow: rgba(37,211,102,0.55);
+      --ig-glow: rgba(214,41,118,0.5);
+      --radius: 10px;
+      --radius-lg: 16px;
+      --max: 1320px;
+      --pad: clamp(20px, 4vw, 56px);
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button { font-family: inherit; }
+
+    .grain {
+      position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: screen;
+    }
+
+    /* ─── ICONOS SOCIALES FLOTANTES ─── */
+    .social-icon {
+      width: 28px; height: 28px;
+      display: inline-flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      transition: transform 0.28s var(--ease), filter 0.28s var(--ease);
+      will-change: transform;
+    }
+    .social-icon svg { width: 100%; height: 100%; display: block; }
+    .social-icon.wa { color: var(--wa); filter: drop-shadow(0 0 6px rgba(37,211,102,0.3)); }
+    .social-icon.wa:hover { filter: drop-shadow(0 0 18px var(--wa-glow)); transform: scale(1.14) translateY(-1px); }
+    .social-icon.ig { filter: drop-shadow(0 0 6px rgba(214,41,118,0.24)); }
+    .social-icon.ig:hover { filter: drop-shadow(0 0 18px var(--ig-glow)); transform: scale(1.14) translateY(-1px); }
+
+    .floating-social {
+      position: fixed;
+      right: clamp(16px, 3vw, 30px);
+      bottom: clamp(16px, 3vw, 30px);
+      z-index: 250;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .floating-social .social-icon { width: 44px; height: 44px; }
+
+    @media (max-width: 640px) {
+      .floating-social { gap: 12px; right: 16px; bottom: 16px; }
+      .floating-social .social-icon { width: 40px; height: 40px; }
+    }
+
+    /* ─── BOTONES ─── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 13px 24px; border-radius: 999px;
+      font-size: 0.88rem; font-weight: 600;
+      text-decoration: none; border: 1px solid transparent; cursor: pointer;
+      transition: all 0.25s var(--ease); white-space: nowrap;
+    }
+    .btn svg { width: 17px; height: 17px; flex: 0 0 auto; }
+    .btn-accent { background: var(--accent); color: #000; box-shadow: 0 0 28px -8px var(--accent-glow); }
+    .btn-accent:hover { background: #5eff40; transform: translateY(-2px); box-shadow: 0 0 40px -6px var(--accent-glow); }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+    .btn-lg { padding: 17px 34px; font-size: 1rem; }
+
+    /* ─── HERO ─── */
+    .hero {
+      max-width: var(--max); margin: 0 auto;
+      padding: clamp(60px, 8.5vw, 140px) var(--pad) clamp(50px, 6vw, 96px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: clamp(40px, 5.5vw, 72px);
+      position: relative;
+      z-index: 2;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; top: 0%; right: 50%;
+      transform: translateX(50%);
+      width: min(900px, 100vw); height: 700px;
+      background: radial-gradient(ellipse at center, rgba(57,255,20,0.16) 0%, transparent 60%);
+      pointer-events: none; z-index: -1;
+    }
+    .hero::after {
+      content: "LK";
+      position: absolute; left: 50%; bottom: -22%;
+      transform: translateX(-50%);
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(18rem, 40vw, 40rem);
+      line-height: 0.8;
+      color: rgba(57,255,20,0.03);
+      pointer-events: none; z-index: -1;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1180px;
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      font-size: 0.76rem; letter-spacing: 0.34em; text-transform: uppercase;
+      color: var(--muted); font-weight: 500; margin-bottom: 32px;
+      animation: heroIn 0.9s var(--ease) both;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: ""; width: 32px; height: 1px; background: var(--accent); flex: 0 0 auto;
+    }
+
+    .hero-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: clamp(18px, 2.6vw, 40px);
+      margin-bottom: 36px;
+      animation: heroIn 0.9s var(--ease) both;
+      animation-delay: 0.1s;
+    }
+    .hero-logo {
+      height: calc(clamp(2.8rem, 8.2vw, 6.8rem) * 1.72);
+      width: auto;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 0 34px rgba(57,255,20,0.32));
+    }
+    .hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.8rem, 8.2vw, 6.8rem);
+      line-height: 0.86; text-transform: uppercase;
+      letter-spacing: -0.015em;
+      margin: 0;
+      flex: 0 0 auto;
+    }
+    .hero h1 em {
+      font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+      text-transform: none; letter-spacing: -0.02em; color: var(--accent);
+      text-shadow: 0 0 46px rgba(57,255,20,0.3);
+      transition: text-shadow 0.4s var(--ease);
+    }
+    .hero h1:hover em { text-shadow: 0 0 70px rgba(57,255,20,0.5); }
+
+    .hero .lead {
+      font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+      color: var(--ink-2);
+      max-width: 62ch;
+      line-height: 1.65;
+      margin: 0 auto 38px;
+      animation: heroIn 0.9s var(--ease) both;
+      animation-delay: 0.25s;
+    }
+    .hero-cta {
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+      animation: heroIn 0.9s var(--ease) both;
+      animation-delay: 0.35s;
+    }
+
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── FLOW: DEL CONCEPTO A LA PRENDA ─── */
+    .hero-flow-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 26px;
+      width: 100%;
+      max-width: 940px;
+      animation: heroIn 0.9s var(--ease) both;
+      animation-delay: 0.5s;
+    }
+    .hero-flow-eyebrow {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--muted); font-weight: 500;
+    }
+    .hero-flow-eyebrow::before,
+    .hero-flow-eyebrow::after {
+      content: ""; width: 24px; height: 1px; background: var(--line-strong);
+    }
+
+    .hero-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(10px, 1.6vw, 22px);
+      width: 100%;
+    }
+
+    .flow-step {
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 230px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.4s var(--ease);
+    }
+    .flow-step:hover { transform: translateY(-5px); }
+
+    .flow-head {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .flow-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 0.82rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-shadow: 0 0 14px var(--accent-glow);
+    }
+    .flow-label {
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .flow-media {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      background: var(--bg-2);
+      position: relative;
+      box-shadow: 0 22px 44px -24px rgba(0,0,0,0.9);
+      transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    }
+    .flow-step:hover .flow-media {
+      border-color: rgba(57,255,20,0.45);
+      box-shadow: 0 26px 52px -24px rgba(0,0,0,0.9), 0 0 0 1px rgba(57,255,20,0.18);
+    }
+    .flow-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.94) contrast(1.06);
+      transition: transform 0.7s var(--ease), filter 0.4s var(--ease);
+    }
+    .flow-step:hover .flow-media img {
+      transform: scale(1.05);
+      filter: brightness(1.02) contrast(1.06);
+    }
+    .flow-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+    }
+
+    .flow-desc {
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .flow-connector {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      align-self: center;
+      flex: 0 0 auto;
+      margin-bottom: 26px; /* alinea los puntos con el centro de la imagen */
+    }
+    .flow-connector span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.3;
+      animation: dotPulse 1.4s ease-in-out infinite;
+    }
+    .flow-connector span:nth-child(2) { animation-delay: 0.2s; }
+    .flow-connector span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes dotPulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.6); }
+    }
+
+    /* ─── MARQUEE (EPIC) ─── */
+    .marquee {
+      background: #000;
+      border-top: 1px solid rgba(57,255,20,0.15);
+      border-bottom: 1px solid rgba(57,255,20,0.15);
+      overflow: hidden;
+      padding: 16px 0;
+      position: relative;
+      z-index: 2;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      width: max-content;
+      animation: marquee 85s linear infinite;
+      will-change: transform;
+    }
+    .marquee-track span {
+      font-family: 'Anton', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      display: inline-flex;
+      align-items: center;
+    }
+    .marquee-track span::after {
+      content: "✦";
+      margin-left: 48px;
+      color: var(--accent);
+      font-size: 0.9rem;
+      text-shadow: 0 0 14px var(--accent-glow);
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ─── SECCIONES ─── */
+    .section { padding: clamp(44px, 6vw, 80px) var(--pad); position: relative; z-index: 2; }
+    .section-inner { max-width: var(--max); margin: 0 auto; position: relative; }
+    .section-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 24px; flex-wrap: wrap; margin-bottom: clamp(24px, 3.5vw, 40px);
+    }
+    .section-eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); font-weight: 500; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.3rem, 5.4vw, 4.2rem);
+      line-height: 0.9; text-transform: uppercase; letter-spacing: -0.01em;
+    }
+    .section-title em {
+      font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+      text-transform: none; color: var(--accent);
+      text-shadow: 0 0 30px rgba(57,255,20,0.25);
+    }
+    .section-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      white-space: nowrap;
+    }
+    @media (max-width: 900px) {
+      .section-desc { white-space: normal; max-width: 60ch; }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(26px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ─── GALERÍA ─── */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: clamp(12px, 1.8vw, 20px);
+    }
+    .work-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .work-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(57,255,20,0.35);
+      box-shadow: 0 24px 44px -30px rgba(0,0,0,0.9), 0 0 0 1px rgba(57,255,20,0.15);
+    }
+    .work-media {
+      aspect-ratio: 4/5; overflow: hidden; background: var(--bg-2); position: relative;
+    }
+    .work-media img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s var(--ease), filter 0.5s var(--ease);
+      filter: brightness(0.95) contrast(1.05);
+    }
+    .work-card:hover .work-media img { transform: scale(1.05); filter: brightness(1.02) contrast(1.05); }
+    .work-media.img-error { display: flex; align-items: center; justify-content: center; }
+    .work-media.img-error::after { content: "Sin imagen"; color: var(--muted); font-size: 0.8rem; }
+    .work-tag {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--accent); color: #000;
+      border-radius: 999px;
+      padding: 5px 12px; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      box-shadow: 0 0 18px -4px var(--accent-glow);
+    }
+    .work-body { padding: 14px 16px 18px; }
+    .work-title { font-size: 0.94rem; font-weight: 600; letter-spacing: 0.01em; margin-bottom: 3px; }
+    .work-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.45; }
+    .works-empty {
+      grid-column: 1/-1; padding: 54px 24px; text-align: center;
+      color: var(--muted); border: 1px dashed var(--line-strong);
+      border-radius: var(--radius-lg); font-size: 0.9rem; line-height: 1.6;
+    }
+
+    /* ─── PASOS ─── */
+    #pedido { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    .step {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); padding: 24px 22px;
+      transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+    .step:hover { border-color: rgba(57,255,20,0.25); transform: translateY(-2px); }
+    .step-num {
+      font-family: 'Anton', sans-serif; font-size: 2.4rem; line-height: 1;
+      color: var(--accent); margin-bottom: 12px;
+      text-shadow: 0 0 24px rgba(57,255,20,0.25);
+    }
+    .step h3 { font-size: 1.02rem; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
+    .step p { font-size: 0.86rem; color: var(--ink-2); line-height: 1.55; }
+
+    .step-note {
+      margin-top: 18px;
+      background: linear-gradient(135deg, rgba(57,255,20,0.08) 0%, rgba(57,255,20,0.02) 100%);
+      border: 1px solid rgba(57,255,20,0.25);
+      border-radius: var(--radius-lg); padding: 20px 26px;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      font-size: 0.92rem; color: var(--ink-2);
+    }
+    .step-note strong {
+      font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+      font-size: 1.25rem; color: var(--accent);
+    }
+
+    /* ─── TALLES ─── */
+    .size-table-wrap {
+      overflow-x: auto; border: 1px solid var(--line);
+      border-radius: var(--radius-lg); background: var(--card);
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 420px; }
+    th, td { padding: 14px 20px; text-align: left; border-bottom: 1px solid var(--line); font-size: 0.9rem; color: var(--ink); }
+    th {
+      font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); font-weight: 600; background: var(--bg-2);
+    }
+    tr:last-child td { border-bottom: none; }
+    td:first-child { font-family: 'Anton', sans-serif; font-size: 1.1rem; letter-spacing: 0.05em; color: var(--accent); }
+    .size-note { margin-top: 14px; font-size: 0.76rem; color: var(--muted); }
+
+    /* ─── FOOTER ─── */
+    .site-footer { border-top: 1px solid var(--line); padding: 24px var(--pad); position: relative; z-index: 2; }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap; font-size: 0.78rem; color: var(--muted);
+    }
+    .footer-left { display: flex; align-items: center; gap: 12px; }
+    .admin-trigger {
+      background: none; border: none; color: var(--muted); opacity: 0.35;
+      font-size: 1rem; cursor: pointer; padding: 4px 8px;
+      transition: opacity 0.25s var(--ease), color 0.25s var(--ease);
+    }
+    .admin-trigger:hover { opacity: 1; color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .site-footer { padding-bottom: 100px; }
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(5,5,5,0.96);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center;
+      padding: 0;
+    }
+    .lightbox.open { display: flex; animation: fadeIn 0.3s var(--ease); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .lightbox-inner {
+      background: var(--card);
+      width: 100%; max-width: 820px;
+      max-height: 100vh;
+      max-height: 100dvh;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      animation: lightboxIn 0.4s var(--ease);
+    }
+    @keyframes lightboxIn {
+      from { opacity: 0; transform: scale(0.97) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @media (min-width: 900px) {
+      .lightbox { padding: 20px; }
+      .lightbox-inner {
+        border-radius: var(--radius-lg);
+        max-height: 90vh;
+        max-height: 90dvh;
+      }
+    }
+
+    .lightbox-top {
+      padding: 18px 64px 14px 24px;
+      display: flex; align-items: center; gap: 12px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--line);
+      flex: 0 0 auto;
+    }
+    .lightbox-top .work-tag {
+      position: static;
+      box-shadow: none;
+    }
+    .lightbox-top h3 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+    }
+    .lightbox-img {
+      background: #000;
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-img img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-bottom {
+      padding: 14px 24px 20px;
+      display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap; justify-content: space-between;
+      border-top: 1px solid var(--line);
+      flex: 0 0 auto;
+    }
+    .lightbox-bottom p {
+      color: var(--ink-2);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin: 0;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .lightbox-close {
+      position: absolute; top: 12px; right: 12px; z-index: 3;
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid var(--line-strong); background: rgba(0,0,0,0.7);
+      color: var(--ink); font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.25s var(--ease);
+    }
+    .lightbox-close:hover { background: var(--accent); color: #000; border-color: var(--accent); transform: rotate(90deg); }
+
+    .lb-wa-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 11px 20px;
+      background: var(--wa); color: #fff;
+      border-radius: 999px; text-decoration: none;
+      font-size: 0.86rem; font-weight: 600;
+      transition: all 0.25s var(--ease);
+      flex: 0 0 auto;
+    }
+    .lb-wa-btn svg { width: 17px; height: 17px; }
+    .lb-wa-btn:hover { background: #1ebe5b; transform: translateY(-1px); }
+
+    @media (max-width: 640px) {
+      .lightbox-top { padding: 14px 56px 12px 18px; }
+      .lightbox-bottom { padding: 12px 18px 16px; }
+      .lightbox-top h3 { font-size: 1.2rem; }
+      .lb-wa-btn { padding: 10px 16px; font-size: 0.82rem; }
+    }
+
+    /* ─── ADMIN ─── */
+    .admin-overlay {
+      position: fixed; inset: 0; z-index: 400;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      display: none; padding: 20px; overflow-y: auto;
+    }
+    .admin-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+    .login-card {
+      background: var(--card); border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      width: 100%; max-width: 380px; padding: 34px; margin: 10vh auto;
+      animation: statusIn 0.3s var(--ease);
+    }
+    .login-card h3 {
+      font-family: 'Anton', sans-serif; font-size: 1.7rem; text-transform: uppercase;
+      line-height: 1; margin-bottom: 6px;
+    }
+    .login-card p { font-size: 0.82rem; color: var(--muted); margin-bottom: 22px; }
+
+    .login-error {
+      display: none; padding: 10px 13px; border-radius: 8px;
+      font-size: 0.78rem; font-weight: 500; margin-bottom: 14px;
+      border: 1px solid var(--danger-border);
+      background: var(--danger-soft); color: var(--danger);
+    }
+    .login-error.show { display: block; animation: statusIn 0.22s var(--ease); }
+    .login-error.info {
+      border-color: rgba(57,255,20,0.3);
+      background: rgba(57,255,20,0.08);
+      color: var(--accent);
+    }
+
+    .admin-panel {
+      background: var(--bg-2); border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      width: 100%; max-width: 1000px; margin: 40px auto 60px;
+      padding: clamp(22px, 3vw, 36px);
+      animation: statusIn 0.3s var(--ease);
+    }
+    .admin-head {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; margin-bottom: 22px; flex-wrap: wrap;
+    }
+    .admin-head h3 { font-family: 'Anton', sans-serif; font-size: 1.6rem; text-transform: uppercase; line-height: 1; }
+    .admin-head small { display: block; font-size: 0.76rem; color: var(--muted); margin-top: 4px; }
+    .admin-head-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .admin-head-actions button {
+      border: 1px solid var(--line-strong); background: transparent; color: var(--ink);
+      padding: 9px 16px; border-radius: 999px; font-size: 0.78rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s var(--ease);
+    }
+    .admin-head-actions button:hover { border-color: var(--accent); color: var(--accent); }
+
+    .admin-status {
+      display: none; padding: 12px 16px; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 500; margin-bottom: 20px;
+      border: 1px solid transparent;
+    }
+    .admin-status.show { display: block; animation: statusIn 0.22s var(--ease); }
+    .admin-status.success {
+      background: rgba(57,255,20,0.1);
+      border-color: rgba(57,255,20,0.3);
+      color: var(--accent);
+    }
+    .admin-status.error {
+      background: var(--danger-soft);
+      border-color: var(--danger-border);
+      color: var(--danger);
+    }
+    .admin-status.info {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--line-strong);
+      color: var(--ink-2);
+    }
+
+    @keyframes statusIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .admin-grid { display: grid; grid-template-columns: 340px 1fr; gap: 24px; }
+    @media (max-width: 780px) { .admin-grid { grid-template-columns: 1fr; } }
+
+    .admin-form-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); padding: 22px;
+      align-self: start; position: sticky; top: 20px;
+    }
+    @media (max-width: 780px) { .admin-form-card { position: static; } }
+    .admin-form-card h4 { font-size: 0.96rem; margin-bottom: 18px; font-weight: 600; }
+
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block; font-size: 0.68rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 6px;
+    }
+    .field input {
+      width: 100%; padding: 11px 13px;
+      border: 1px solid var(--line-strong); border-radius: 8px;
+      background: var(--bg); font-family: inherit; font-size: 0.9rem; color: var(--ink);
+      transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    }
+    .field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .field input::placeholder { color: var(--muted); }
+    .field small { display: block; font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
+
+    .preview {
+      margin-top: 10px; border-radius: 8px; overflow: hidden;
+      border: 1px solid var(--line); display: none; background: var(--bg);
+    }
+    .preview.show { display: block; }
+    .preview img { width: 100%; height: 170px; object-fit: cover; }
+
+    .form-actions { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+    .form-actions button {
+      flex: 1; padding: 12px 16px; border-radius: 8px; border: 1px solid transparent;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      transition: all 0.2s var(--ease); min-width: 120px;
+    }
+    .btn-save { background: var(--accent); color: #000; }
+    .btn-save:hover { background: #5eff40; }
+    .btn-cancel { background: transparent; border-color: var(--line-strong); color: var(--ink); }
+    .btn-cancel:hover { border-color: var(--accent); color: var(--accent); }
+
+    .admin-list { display: flex; flex-direction: column; gap: 10px; }
+    .admin-empty {
+      padding: 30px; text-align: center; color: var(--muted);
+      border: 1px dashed var(--line-strong); border-radius: var(--radius);
+      font-size: 0.85rem;
+    }
+    .admin-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 12px; background: var(--card);
+      border: 1px solid var(--line); border-radius: var(--radius);
+      transition: border-color 0.2s var(--ease);
+    }
+    .admin-item:hover { border-color: var(--line-strong); }
+    .admin-thumb {
+      width: 54px; height: 54px; border-radius: 8px; overflow: hidden;
+      background: var(--bg); flex: 0 0 auto;
+    }
+    .admin-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .admin-item-info { flex: 1; min-width: 0; }
+    .admin-item-info strong {
+      display: block; font-size: 0.88rem; font-weight: 600;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .admin-item-info span { font-size: 0.72rem; color: var(--muted); }
+    .admin-item-actions { display: flex; gap: 4px; flex-wrap: wrap; }
+    .admin-item-actions button {
+      height: 32px; border-radius: 8px; border: 1px solid var(--line);
+      background: transparent; color: var(--ink); cursor: pointer;
+      font-size: 0.8rem; display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s var(--ease); min-width: 32px; padding: 0 6px;
+    }
+    .admin-item-actions button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .admin-item-actions button:disabled { opacity: 0.3; cursor: not-allowed; }
+    .admin-item-actions .btn-edit { padding: 0 12px; font-size: 0.75rem; font-weight: 600; }
+
+    .admin-note {
+      margin-top: 26px; padding: 16px 18px; border-radius: var(--radius);
+      background: var(--accent-soft); border: 1px solid rgba(57,255,20,0.25);
+      font-size: 0.78rem; line-height: 1.6; color: var(--ink-2);
+    }
+    .admin-note strong { color: var(--accent); }
+    .admin-tools { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    .admin-tools button, .admin-tools label {
+      padding: 9px 16px; border-radius: 999px;
+      border: 1px solid var(--line-strong); background: transparent; color: var(--ink);
+      font-size: 0.76rem; font-weight: 600; cursor: pointer;
+      transition: all 0.2s var(--ease); display: inline-flex; align-items: center;
+    }
+    .admin-tools button:hover, .admin-tools label:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 720px) {
+      .hero-flow { flex-direction: column; gap: 20px; max-width: 320px; margin: 0 auto; }
+      .flow-step { width: 100%; max-width: 100%; }
+      .flow-connector {
+        transform: rotate(90deg);
+        margin: 0;
+        padding: 0;
+      }
+    }
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Gradiente de Instagram -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#FEDA75"/>
+        <stop offset="26%" stop-color="#FA7E1E"/>
+        <stop offset="51%" stop-color="#D62976"/>
+        <stop offset="76%" stop-color="#962FBF"/>
+        <stop offset="100%" stop-color="#4F5BD5"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <p class="hero-eyebrow">Rosario · Mayor y menor</p>
+        <div class="hero-title-row">
+          <img class="hero-logo" src="https://i.postimg.cc/xd58HZwM/LKLOGO.png" alt="LK Remeras" width="400" height="200" loading="eager" decoding="async">
+          <h1>Remeras<br><em>a tu medida</em></h1>
+        </div>
+        <p class="lead">Prendas personalizadas directas de fábrica. Algodón premium, diseño a tu gusto y envíos sin cargo a todo Rosario.</p>
+        <div class="hero-cta">
+          <a href="https://wa.me/5493416200001?text=Hola%20LK!%20Quiero%20hacer%20una%20remera%20personalizada." target="_blank" rel="noopener" class="btn btn-accent btn-lg">
+            Pedí tu diseño
+          </a>
+          <a href="#trabajos" class="btn btn-ghost btn-lg">Ver trabajos</a>
+        </div>
+      </div>
+
+      <!-- FLOW: DEL CONCEPTO A LA PRENDA -->
+      <div class="hero-flow-wrap" aria-hidden="true">
+        <p class="hero-flow-eyebrow">Del concepto a la prenda</p>
+        <div class="hero-flow">
+
+          <div class="flow-step">
+            <div class="flow-head">
+              <span class="flow-num">01</span>
+              <span class="flow-label">Tu idea</span>
+            </div>
+            <div class="flow-media">
+              <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=600&q=80" alt="Tu idea" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            </div>
+            <p class="flow-desc">Contanos qué imaginás</p>
+          </div>
+
+          <div class="flow-connector"><span></span><span></span><span></span></div>
+
+          <div class="flow-step">
+            <div class="flow-head">
+              <span class="flow-num">02</span>
+              <span class="flow-label">Diseño</span>
+            </div>
+            <div class="flow-media">
+              <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=600&q=80" alt="Diseño" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            </div>
+            <p class="flow-desc">Lo creamos juntos</p>
+          </div>
+
+          <div class="flow-connector"><span></span><span></span><span></span></div>
+
+          <div class="flow-step">
+            <div class="flow-head">
+              <span class="flow-num">03</span>
+              <span class="flow-label">Prenda</span>
+            </div>
+            <div class="flow-media">
+              <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" alt="Prenda" loading="lazy" decoding="async" onerror="this.style.display='none'">
+            </div>
+            <p class="flow-desc">La recibís y la usás</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Venta mayor y menor</span><span>Envíos sin cargo a Rosario</span><span>Algodón premium</span><span>Diseños personalizados</span><span>Directo de fábrica</span>
+        <span>Venta mayor y menor</span><span>Envíos sin cargo a Rosario</span><span>Algodón premium</span><span>Diseños personalizados</span><span>Directo de fábrica</span>
+      </div>
+    </div>
+
+    <!-- TRABAJOS -->
+    <section class="section" id="trabajos">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-eyebrow">Galería</p>
+            <h2 class="section-title">Trabajos <em>recientes</em></h2>
+          </div>
+          <p class="section-desc">Algunos diseños salidos del taller. Tocá uno para verlo en grande.</p>
+        </div>
+        <div class="works-grid reveal" id="worksGrid"></div>
+      </div>
+    </section>
+
+    <!-- CÓMO PEDIR -->
+    <section class="section" id="pedido">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-eyebrow">Paso a paso</p>
+            <h2 class="section-title">Cómo <em>pedir</em></h2>
+          </div>
+          <p class="section-desc">Simple y directo. Coordinamos todo por WhatsApp.</p>
+        </div>
+        <div class="steps reveal">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h3>Contanos tu idea</h3>
+            <p>Escribinos y contanos qué diseño pensaste. Te ayudamos a bajarlo a la remera.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h3>Elegí color y cantidad</h3>
+            <p>Definimos el color de la prenda y la cantidad. Trabajamos venta por mayor y menor.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h3>Coordinamos entrega</h3>
+            <p>Acordamos la demora del pedido y la fecha de entrega. Envíos sin cargo a todo Rosario.</p>
+          </div>
+        </div>
+        <div class="step-note reveal">
+          <strong>Seña del 20% para confirmar el pedido.</strong>
+          <span>El resto se abona al momento de la entrega.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TALLES -->
+    <section class="section" id="talles">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <p class="section-eyebrow">Medidas</p>
+            <h2 class="section-title">Tabla de <em>talles</em></h2>
+          </div>
+          <p class="section-desc">Medidas aproximadas en centímetros: ancho de pecho × largo total.</p>
+        </div>
+        <div class="size-table-wrap reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>Talle</th>
+                <th>Ancho</th>
+                <th>Largo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>S</td><td>50 cm</td><td>71 cm</td></tr>
+              <tr><td>M</td><td>52 cm</td><td>73 cm</td></tr>
+              <tr><td>L</td><td>54 cm</td><td>75 cm</td></tr>
+              <tr><td>XL</td><td>56 cm</td><td>77 cm</td></tr>
+              <tr><td>XXL</td><td>58 cm</td><td>79 cm</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="size-note reveal">Si tenés dudas con el talle, escribinos y te ayudamos a elegir.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span>© <span id="year"></span> LK Remeras · Rosario, Santa Fe</span>
+        <button class="admin-trigger" id="adminTrigger" type="button" aria-label="Acceso administración">·</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING SOCIAL -->
+  <div class="floating-social" aria-label="Contacto">
+    <a href="https://wa.me/5493416200001?text=Hola%20LK!%20Quiero%20hacer%20una%20remera%20personalizada."
+       target="_blank" rel="noopener" class="social-icon wa" aria-label="Pedir por WhatsApp" title="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c-.01 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42"/>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/lk.remeras?dlrf=b2kzbjlzdHBncDdm"
+       target="_blank" rel="noopener" class="social-icon ig" aria-label="Instagram" title="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="url(#igGradient)" d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.93 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.36-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.36-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista del trabajo">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lbClose" aria-label="Cerrar">✕</button>
+      <div class="lightbox-top">
+        <span class="work-tag" id="lbTag" style="display:none;"></span>
+        <h3 id="lbTitle"></h3>
+      </div>
+      <div class="lightbox-img"><img id="lbImg" src="" alt=""></div>
+      <div class="lightbox-bottom">
+        <p id="lbDesc"></p>
+        <a id="lbWa" href="#" target="_blank" rel="noopener" class="lb-wa-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c-.01 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42"/>
+          </svg>
+          Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN OVERLAY -->
+  <div class="admin-overlay" id="adminOverlay">
+
+    <!-- LOGIN -->
+    <div class="login-card" id="loginCard">
+      <h3>Acceso privado</h3>
+      <p>Ingresá para administrar los trabajos de la galería.</p>
+      <div class="login-error" id="loginError" role="status" aria-live="polite"></div>
+      <form id="loginForm" autocomplete="off">
+        <div class="field">
+          <label for="loginUser">Usuario</label>
+          <input type="text" id="loginUser" name="user" placeholder="Usuario" required>
+        </div>
+        <div class="field">
+          <label for="loginPass">Contraseña</label>
+          <input type="password" id="loginPass" name="pass" placeholder="Contraseña" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-save">Entrar</button>
+          <button type="button" class="btn-cancel" id="loginCancel">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- PANEL -->
+    <div class="admin-panel" id="adminPanel" style="display:none;">
+      <div class="admin-head">
+        <div>
+          <h3>Panel de trabajos</h3>
+          <small>Agregá, editá, ordená o eliminá los trabajos de la galería.</small>
+        </div>
+        <div class="admin-head-actions">
+          <button type="button" id="logoutBtn">Cerrar sesión</button>
+          <button type="button" class="danger" id="closePanelBtn">Salir</button>
+        </div>
+      </div>
+
+      <div class="admin-status" id="adminStatus" role="status" aria-live="polite"></div>
+
+      <div class="admin-grid">
+        <!-- FORM -->
+        <div class="admin-form-card">
+          <h4 id="formTitle">Agregar trabajo</h4>
+          <form id="workForm" autocomplete="off">
+            <div class="field">
+              <label for="wImg">Imagen (URL)</label>
+              <input type="url" id="wImg" placeholder="https://..." required>
+              <small>Pegá el link directo a la foto (JPG, PNG o WebP).</small>
+              <div class="preview" id="wPreview"><img id="wPreviewImg" src="" alt=""></div>
+            </div>
+            <div class="field">
+              <label for="wTitle">Título</label>
+              <input type="text" id="wTitle" placeholder="Ej: Remera oversize negra" required>
+            </div>
+            <div class="field">
+              <label for="wDesc">Descripción (opcional)</label>
+              <input type="text" id="wDesc" placeholder="Ej: Estampa al frente, talle M">
+            </div>
+            <div class="field">
+              <label for="wTag">Etiqueta (opcional)</label>
+              <input type="text" id="wTag" placeholder="Ej: Nuevo, Diseño propio, Mayorista">
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-save" id="saveBtn">Guardar</button>
+              <button type="button" class="btn-cancel" id="cancelEditBtn" style="display:none;">Cancelar edición</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- LIST -->
+        <div>
+          <div class="admin-list" id="adminList"></div>
+
+          <div class="admin-tools">
+            <button type="button" id="exportBtn">Exportar JSON</button>
+            <label for="importInput">Importar JSON</label>
+            <input type="file" id="importInput" accept="application/json,.json" hidden>
+            <button type="button" id="resetBtn">Restaurar ejemplos</button>
+          </div>
+
+          <div class="admin-note">
+            <strong>Importante:</strong> los cambios se guardan en este navegador (localStorage).
+            Para que los vean todos los visitantes desde cualquier dispositivo, usá
+            <strong>Exportar JSON</strong> y enviá el archivo al desarrollador para publicarlo,
+            o pedí la versión con base de datos en la nube (Firebase / Supabase).
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+
+    var WA_NUMBER = "5493416200001";
+    var ADMIN_USER = "ADMIN";
+    var ADMIN_PASS = "153045";
+    var LS_KEY = "lk-works-v2";
+    var SESSION_KEY = "lk-admin-session";
+
+    var DEFAULT_WORKS = [
+      { id: "w1", title: "Remera oversize negra", desc: "Estampa al frente · Algodón premium", tag: "Nuevo", img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80" },
+      { id: "w2", title: "Básica blanca personalizada", desc: "Diseño a elección · Corte unisex", tag: "Diseño propio", img: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=80" },
+      { id: "w3", title: "Pack mayorista", desc: "Pedido por cantidad · Precio especial", tag: "Mayorista", img: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=80" },
+      { id: "w4", title: "Remera estampada", desc: "Impresión full color · Talle a elección", tag: "", img: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=80" }
+    ];
+
+    var works = [];
+    var editingId = null;
+
+    function $(id) { return document.getElementById(id); }
+
+    function escapeHtml(value) {
+      return String(value == null ? "" : value).replace(/[&<>"']/g, function (m) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m];
+      });
+    }
+
+    function waLink(text) {
+      return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
+    }
+
+    function loginMsg(msg, type) {
+      var el = $("loginError");
+      if (!el) return;
+      el.textContent = msg;
+      el.className = "login-error show" + (type === "info" ? " info" : "");
+      clearTimeout(loginMsg._t);
+      loginMsg._t = setTimeout(function () { el.classList.remove("show"); }, 4000);
+    }
+
+    function clearLoginMsg() {
+      var el = $("loginError");
+      if (!el) return;
+      clearTimeout(loginMsg._t);
+      el.classList.remove("show");
+    }
+
+    function adminStatus(msg, type) {
+      var el = $("adminStatus");
+      if (!el) return;
+      el.textContent = msg;
+      el.className = "admin-status show " + (type || "info");
+      clearTimeout(adminStatus._t);
+      adminStatus._t = setTimeout(function () { el.classList.remove("show"); }, 3500);
+    }
+
+    function loadWorks() {
+      try {
+        var raw = localStorage.getItem(LS_KEY);
+        if (raw) {
+          var parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) return parsed;
+        }
+      } catch (e) { /* ignore */ }
+      return DEFAULT_WORKS.map(function (w) { return Object.assign({}, w); });
+    }
+
+    function saveWorks() {
+      try { localStorage.setItem(LS_KEY, JSON.stringify(works)); }
+      catch (e) { adminStatus("No se pudo guardar en este navegador", "error"); }
+    }
+
+    function renderWorks() {
+      var grid = $("worksGrid");
+      if (!grid) return;
+
+      if (!works.length) {
+        grid.innerHTML = '<div class="works-empty">Todavía no hay trabajos cargados.<br>Los podés agregar desde el panel de administración.</div>';
+        return;
+      }
+
+      grid.innerHTML = works.map(function (w) {
+        var img = w.img
+          ? '<img src="' + escapeHtml(w.img) + '" alt="' + escapeHtml(w.title) + '" loading="lazy" decoding="async" ' +
+            'onerror="this.style.display=\'none\';this.parentElement.classList.add(\'img-error\');">'
+          : "";
+        var tag = w.tag ? '<span class="work-tag">' + escapeHtml(w.tag) + '</span>' : "";
+        var desc = w.desc ? '<p class="work-desc">' + escapeHtml(w.desc) + '</p>' : "";
+        return '<article class="work-card" data-open="' + escapeHtml(w.id) + '" tabindex="0" role="button" aria-label="Ver ' + escapeHtml(w.title) + '">' +
+                 '<div class="work-media">' + img + tag + '</div>' +
+                 '<div class="work-body">' +
+                   '<h3 class="work-title">' + escapeHtml(w.title) + '</h3>' +
+                   desc +
+                 '</div>' +
+               '</article>';
+      }).join("");
+
+      Array.prototype.forEach.call(grid.querySelectorAll("[data-open]"), function (card) {
+        card.addEventListener("click", function () { openLightbox(card.getAttribute("data-open")); });
+        card.addEventListener("keydown", function (ev) {
+          if (ev.key === "Enter" || ev.key === " ") {
+            ev.preventDefault();
+            openLightbox(card.getAttribute("data-open"));
+          }
+        });
+      });
+    }
+
+    function openLightbox(id) {
+      var w = null;
+      for (var i = 0; i < works.length; i++) {
+        if (works[i].id === id) { w = works[i]; break; }
+      }
+      if (!w) return;
+
+      var img = $("lbImg");
+      img.src = w.img || "";
+      img.alt = w.title || "";
+      $("lbTitle").textContent = w.title || "";
+      $("lbDesc").textContent = w.desc || "";
+      $("lbTag").textContent = w.tag || "";
+      $("lbTag").style.display = w.tag ? "" : "none";
+      $("lbWa").href = waLink('Hola LK! Me interesa un diseño como "' + (w.title || "el de la galería") + '". ¿Me pasás precio y opciones?');
+
+      $("lightbox").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      $("lightbox").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    function isLoggedIn() {
+      try { return sessionStorage.getItem(SESSION_KEY) === "1"; } catch (e) { return false; }
+    }
+
+    function setLoggedIn(v) {
+      try {
+        if (v) sessionStorage.setItem(SESSION_KEY, "1");
+        else sessionStorage.removeItem(SESSION_KEY);
+      } catch (e) { /* ignore */ }
+    }
+
+    function openAdmin() {
+      $("adminOverlay").classList.add("open");
+      document.body.style.overflow = "hidden";
+      clearLoginMsg();
+      if (isLoggedIn()) showPanel();
+      else showLogin();
+    }
+
+    function closeAdmin() {
+      $("adminOverlay").classList.remove("open");
+      document.body.style.overflow = "";
+      $("loginForm").reset();
+      clearLoginMsg();
+    }
+
+    function showLogin() {
+      $("loginCard").style.display = "";
+      $("adminPanel").style.display = "none";
+      setTimeout(function () { $("loginUser").focus(); }, 50);
+    }
+
+    function showPanel() {
+      $("loginCard").style.display = "none";
+      $("adminPanel").style.display = "";
+      renderAdminList();
+      resetForm();
+    }
+
+    function handleLogin(ev) {
+      ev.preventDefault();
+      var user = ($("loginUser").value || "").trim().toUpperCase();
+      var pass = ($("loginPass").value || "").trim();
+      if (user === ADMIN_USER && pass === ADMIN_PASS) {
+        setLoggedIn(true);
+        clearLoginMsg();
+        showPanel();
+        adminStatus("Bienvenido", "success");
+      } else {
+        loginMsg("Usuario o contraseña incorrectos", "error");
+        $("loginPass").value = "";
+        $("loginPass").focus();
+      }
+    }
+
+    function resetForm() {
+      editingId = null;
+      $("workForm").reset();
+      $("formTitle").textContent = "Agregar trabajo";
+      $("saveBtn").textContent = "Guardar";
+      $("cancelEditBtn").style.display = "none";
+      $("wPreview").classList.remove("show");
+      $("wPreviewImg").src = "";
+    }
+
+    function loadIntoForm(w) {
+      editingId = w.id;
+      $("wImg").value = w.img || "";
+      $("wTitle").value = w.title || "";
+      $("wDesc").value = w.desc || "";
+      $("wTag").value = w.tag || "";
+      updatePreview();
+      $("formTitle").textContent = "Editar trabajo";
+      $("saveBtn").textContent = "Guardar cambios";
+      $("cancelEditBtn").style.display = "";
+      $("workForm").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function updatePreview() {
+      var url = ($("wImg").value || "").trim();
+      var wrap = $("wPreview");
+      var img = $("wPreviewImg");
+      if (!url) { wrap.classList.remove("show"); img.src = ""; return; }
+      img.onerror = function () { wrap.classList.remove("show"); };
+      img.onload = function () { wrap.classList.add("show"); };
+      img.src = url;
+    }
+
+    function saveWork(ev) {
+      ev.preventDefault();
+      var img = ($("wImg").value || "").trim();
+      var title = ($("wTitle").value || "").trim();
+      var desc = ($("wDesc").value || "").trim();
+      var tag = ($("wTag").value || "").trim();
+
+      if (!title) { adminStatus("El título es obligatorio", "error"); $("wTitle").focus(); return; }
+      if (!img) { adminStatus("La URL de la imagen es obligatoria", "error"); $("wImg").focus(); return; }
+
+      if (editingId) {
+        for (var i = 0; i < works.length; i++) {
+          if (works[i].id === editingId) {
+            works[i].img = img; works[i].title = title;
+            works[i].desc = desc; works[i].tag = tag;
+            break;
+          }
+        }
+        adminStatus("Trabajo actualizado", "success");
+      } else {
+        works.unshift({
+          id: "w" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
+          img: img, title: title, desc: desc, tag: tag
+        });
+        adminStatus("Trabajo agregado", "success");
+      }
+
+      saveWorks();
+      renderWorks();
+      renderAdminList();
+      resetForm();
+    }
+
+    function renderAdminList() {
+      var list = $("adminList");
+      if (!list) return;
+
+      if (!works.length) {
+        list.innerHTML = '<p class="admin-empty">Sin trabajos cargados todavía.</p>';
+        return;
+      }
+
+      list.innerHTML = works.map(function (w, i) {
+        var thumb = w.img ? '<img src="' + escapeHtml(w.img) + '" alt="" onerror="this.style.display=\'none\'">' : "";
+        var tagLine = w.tag ? '<span>' + escapeHtml(w.tag) + '</span>' : "";
+        return '<div class="admin-item" data-id="' + escapeHtml(w.id) + '">' +
+                 '<div class="admin-thumb">' + thumb + '</div>' +
+                 '<div class="admin-item-info"><strong>' + escapeHtml(w.title) + '</strong>' + tagLine + '</div>' +
+                 '<div class="admin-item-actions">' +
+                   '<button type="button" data-up="' + escapeHtml(w.id) + '" title="Subir" ' + (i === 0 ? "disabled" : "") + '>↑</button>' +
+                   '<button type="button" data-down="' + escapeHtml(w.id) + '" title="Bajar" ' + (i === works.length - 1 ? "disabled" : "") + '>↓</button>' +
+                   '<button type="button" class="btn-edit" data-edit="' + escapeHtml(w.id) + '">Editar</button>' +
+                   '<button type="button" class="btn-del" data-del="' + escapeHtml(w.id) + '" title="Eliminar">✕</button>' +
+                 '</div>' +
+               '</div>';
+      }).join("");
+
+      Array.prototype.forEach.call(list.querySelectorAll("[data-up]"), function (b) {
+        b.addEventListener("click", function () { moveWork(b.getAttribute("data-up"), -1); });
+      });
+      Array.prototype.forEach.call(list.querySelectorAll("[data-down]"), function (b) {
+        b.addEventListener("click", function () { moveWork(b.getAttribute("data-down"), 1); });
+      });
+      Array.prototype.forEach.call(list.querySelectorAll("[data-edit]"), function (b) {
+        b.addEventListener("click", function () {
+          var id = b.getAttribute("data-edit");
+          for (var i = 0; i < works.length; i++) {
+            if (works[i].id === id) { loadIntoForm(works[i]); return; }
+          }
+        });
+      });
+      Array.prototype.forEach.call(list.querySelectorAll("[data-del]"), function (b) {
+        b.addEventListener("click", function () { deleteWork(b.getAttribute("data-del")); });
+      });
+    }
+
+    function moveWork(id, dir) {
+      var idx = -1;
+      for (var i = 0; i < works.length; i++) {
+        if (works[i].id === id) { idx = i; break; }
+      }
+      if (idx === -1) return;
+      var target = idx + dir;
+      if (target < 0 || target >= works.length) return;
+      var tmp = works[idx]; works[idx] = works[target]; works[target] = tmp;
+      saveWorks(); renderWorks(); renderAdminList();
+    }
+
+    function deleteWork(id) {
+      var w = null;
+      for (var i = 0; i < works.length; i++) {
+        if (works[i].id === id) { w = works[i]; break; }
+      }
+      if (!w) return;
+      if (!window.confirm('¿Eliminar "' + w.title + '"?\nEsta acción no se puede deshacer.')) return;
+      works = works.filter(function (x) { return x.id !== id; });
+      if (editingId === id) resetForm();
+      saveWorks(); renderWorks(); renderAdminList();
+      adminStatus("Trabajo eliminado", "success");
+    }
+
+    function exportJson() {
+      var data = JSON.stringify(works, null, 2);
+      var blob = new Blob([data], { type: "application/json" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "lk-trabajos-" + new Date().toISOString().slice(0, 10) + ".json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      adminStatus("JSON exportado", "success");
+    }
+
+    function importJson(file) {
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        try {
+          var parsed = JSON.parse(reader.result);
+          if (!Array.isArray(parsed)) throw new Error("Formato inválido");
+          var clean = parsed.filter(function (w) {
+            return w && typeof w === "object" && typeof w.title === "string";
+          }).map(function (w, i) {
+            return {
+              id: w.id ? String(w.id) : "w" + Date.now().toString(36) + i,
+              img: String(w.img || ""),
+              title: String(w.title || ""),
+              desc: String(w.desc || ""),
+              tag: String(w.tag || "")
+            };
+          });
+          if (!clean.length) throw new Error("Sin trabajos válidos");
+          works = clean;
+          saveWorks(); renderWorks(); renderAdminList(); resetForm();
+          adminStatus("Importados " + clean.length + " trabajos", "success");
+        } catch (e) {
+          adminStatus("Archivo inválido", "error");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetDefaults() {
+      if (!window.confirm("¿Restaurar los trabajos de ejemplo?\nSe perderán los trabajos actuales.")) return;
+      works = DEFAULT_WORKS.map(function (w) { return Object.assign({}, w); });
+      saveWorks(); renderWorks(); renderAdminList(); resetForm();
+      adminStatus("Ejemplos restaurados", "success");
+    }
+
+    function initReveal() {
+      var els = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        Array.prototype.forEach.call(els, function (el) { el.classList.add("in"); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+
+      Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+    }
+
+    function bindEvents() {
+      $("year").textContent = new Date().getFullYear();
+
+      $("lbClose").addEventListener("click", closeLightbox);
+      $("lightbox").addEventListener("click", function (ev) {
+        if (ev.target === $("lightbox")) closeLightbox();
+      });
+
+      $("adminTrigger").addEventListener("click", openAdmin);
+      $("loginForm").addEventListener("submit", handleLogin);
+      $("loginCancel").addEventListener("click", closeAdmin);
+
+      $("logoutBtn").addEventListener("click", function () {
+        setLoggedIn(false);
+        resetForm();
+        showLogin();
+        loginMsg("Sesión cerrada", "info");
+      });
+      $("closePanelBtn").addEventListener("click", closeAdmin);
+
+      $("workForm").addEventListener("submit", saveWork);
+      $("wImg").addEventListener("input", updatePreview);
+      $("cancelEditBtn").addEventListener("click", resetForm);
+
+      $("exportBtn").addEventListener("click", exportJson);
+      $("importInput").addEventListener("change", function (ev) {
+        importJson(ev.target.files && ev.target.files[0]);
+        ev.target.value = "";
+      });
+      $("resetBtn").addEventListener("click", resetDefaults);
+
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key === "Escape") {
+          if ($("lightbox").classList.contains("open")) closeLightbox();
+          else if ($("adminOverlay").classList.contains("open")) closeAdmin();
+        }
+        if (ev.ctrlKey && ev.shiftKey && (ev.key === "A" || ev.key === "a")) {
+          ev.preventDefault();
+          openAdmin();
+        }
+      });
+    }
+
+    function init() {
+      works = loadWorks();
+      bindEvents();
+      renderWorks();
+      initReveal();
+      if (isLoggedIn()) renderAdminList();
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+</body>
+</html>
