@@ -720,11 +720,13 @@
     }
 
     /* ─── ADMIN ─── */
-    .admin-overlay {
+       .admin-overlay {
       position: fixed; inset: 0; z-index: 400;
       background: rgba(0,0,0,0.85);
       backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      display: none; padding: 20px; overflow-y: auto;
+      display: none;
+      padding: clamp(8px, 2.5vw, 20px);
+      overflow-y: auto;
     }
     .admin-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
 
@@ -753,11 +755,12 @@
       color: var(--accent);
     }
 
-    .admin-panel {
+        .admin-panel {
       background: var(--bg-2); border: 1px solid var(--line-strong);
       border-radius: var(--radius-lg);
-      width: 100%; max-width: 1000px; margin: 40px auto 60px;
-      padding: clamp(22px, 3vw, 36px);
+      width: 100%; max-width: 1000px;
+      margin: clamp(12px, 4vw, 40px) auto clamp(24px, 5vw, 60px);
+      padding: clamp(16px, 4vw, 36px);
       animation: statusIn 0.3s var(--ease);
     }
     .admin-head {
@@ -996,7 +999,100 @@
     }
     .confirm-btn-cancel:hover { border-color: var(--ink); background: rgba(255,255,255,0.04); }
     .confirm-btn-danger { background: var(--danger); color: #fff; }
-    .confirm-btn-danger:hover { background: #ff7358; box-shadow: 0 0 24px -6px rgba(255,90,60,0.5); }
+        .confirm-btn-danger:hover { background: #ff7358; box-shadow: 0 0 24px -6px rgba(255,90,60,0.5); }
+
+    /* ═══════════ ADMIN PANEL · MOBILE ═══════════ */
+    @media (max-width: 560px) {
+      /* Login más cómodo en pantalla chica */
+      .login-card {
+        padding: 26px 20px;
+        margin: 6vh auto;
+      }
+      .login-card h3 { font-size: 1.4rem; }
+      .login-card p { font-size: 0.8rem; margin-bottom: 18px; }
+
+      /* Header del panel: título arriba, acciones en fila debajo */
+      .admin-head {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .admin-head h3 { font-size: 1.35rem; }
+      .admin-head-actions {
+        width: 100%;
+      }
+      .admin-head-actions button {
+        flex: 1;
+        padding: 10px 12px;
+        font-size: 0.8rem;
+      }
+
+      /* Items de la lista: acciones bajan a su propia fila */
+      .admin-item {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        padding: 10px;
+        gap: 10px;
+      }
+      .admin-thumb {
+        width: 46px;
+        height: 46px;
+      }
+      .admin-item-info {
+        flex: 1 1 calc(100% - 56px);
+        padding-top: 6px;
+      }
+      .admin-item-info strong { font-size: 0.85rem; }
+      .admin-item-actions {
+        width: 100%;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+        gap: 6px;
+        flex-wrap: nowrap;
+      }
+      .admin-item-actions button {
+        flex: 1;
+        height: 40px;
+        min-width: 0;
+        font-size: 0.85rem;
+      }
+      .admin-item-actions .btn-edit {
+        flex: 2;
+        font-size: 0.8rem;
+      }
+
+      /* Form card a ancho completo, sin sticky (ya lo tenía en 780px) */
+      .admin-form-card { padding: 18px 16px; }
+
+      /* Botones del form apilados verticalmente, full width */
+      .form-actions {
+        flex-direction: column;
+      }
+      .form-actions button {
+        width: 100%;
+        min-width: 0;
+        padding: 13px 16px;
+        font-size: 0.9rem;
+      }
+
+      /* Upload button un poco más chico */
+      .upload-btn {
+        padding: 16px 14px;
+        font-size: 0.85rem;
+      }
+      .preview img { height: 160px; }
+
+      /* Status messages más compactos */
+      .admin-status { font-size: 0.8rem; padding: 10px 12px; }
+    }
+
+    @media (max-width: 400px) {
+      .admin-panel { padding: 14px 12px; }
+      .admin-form-card { padding: 16px 12px; }
+      .admin-head h3 { font-size: 1.2rem; }
+      .admin-thumb { width: 42px; height: 42px; }
+    }
   </style>
 </head>
 <body>
